@@ -120,6 +120,14 @@ abstract class EmbedVideo
         return array($clause, 'noparse' => true, 'isHTML' => true);
     }
 
+    # Generate the HTML necessary to embed the video with the given alignment
+    # and text description
+    protected static function generateAlignClause($url, $width, $height, $align, $desc)
+    {
+		$clause = EmbedVideo::generateNormalClause($url, $width, $height);
+		return EmbedVideo::generateAlignExternClause($clause, $align, $desc, $width, $height);
+    }
+
     # Return the HTML necessary to embed the video normally.
     private static function generateNormalClause($url, $width, $height)
     {
@@ -143,14 +151,6 @@ abstract class EmbedVideo
             $desc .
             "</div></div></div>";
         return $clause;
-    }
-
-    # Generate the HTML necessary to embed the video with the given alignment
-    # and text description
-    private static function generateAlignClause($url, $width, $height, $align, $desc)
-    {
-		$clause = EmbedVideo::generateNormalClause($url, $width, $height);
-		return EmbedVideo::generateAlignExternClause($clause, $align, $desc, $width, $height);
     }
 
     # Get the entry for the specified service, by name
