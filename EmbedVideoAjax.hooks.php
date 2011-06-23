@@ -8,9 +8,9 @@ abstract class EmbedVideoAjax extends EmbedVideo
 	private static function extractAndCleanURLParams() {
 		$params = $_REQUEST['asianfuse'];
 
-		$parmas['width']  = intval(preg_replace('/[a-z]/', '', $parmas['width']));
-		$parmas['height'] = intval(preg_replace('/[a-z]/', '', $parmas['height']));
-		$parmas['desc']   = intval(preg_replace('/^-+/', '', $parmas['desc']));
+		$params['width']  = intval(preg_replace('/[a-z]/', '', $params['width']));
+		$params['height'] = intval(preg_replace('/[a-z]/', '', $params['height']));
+		$params['desc']   = intval(preg_replace('/^-+/', '', $params['desc']));
 		return $params;
 	}
 
