@@ -84,7 +84,7 @@ abstract class EmbedVideo
 
         $service = trim($service);
         $id = trim($id);
-	$desc = $parser->recursiveTagParse($desc);
+		$desc = $parser->recursiveTagParse($desc);
 
         $entry = EmbedVideo::getServiceEntry($service);
         if (!$entry)
@@ -149,18 +149,8 @@ abstract class EmbedVideo
     # and text description
     private static function generateAlignClause($url, $width, $height, $align, $desc)
     {
-        $clause = "<div class=\"thumb t{$align}\">" .
-            "<div class=\"thumbinner\" style=\"width: {$width}px;\">" .
-            "<object width=\"{$width}\" height=\"{$height}\">" .
-            "<param name=\"movie\" value=\"{$url}\"></param>" .
-            "<param name=\"wmode\" value=\"transparent\"></param>" .
-            "<embed src=\"{$url}\" type=\"application/x-shockwave-flash\"" .
-            " wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\"></embed>" .
-            "</object>" .
-            "<div class=\"thumbcaption\">" .
-            $desc .
-            "</div></div></div>";
-        return $clause;
+		$clause = EmbedVideo::generateNormalClause($url, $width, $height);
+		return EmbedVideo::generateAlignExternClause($clause, $align, $desc, $width, $height);
     }
 
     # Get the entry for the specified service, by name
