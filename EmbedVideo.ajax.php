@@ -1,0 +1,5 @@
+<?php
+
+EmbedVideoAjax::printEmbeddedCode();
+
+?>
