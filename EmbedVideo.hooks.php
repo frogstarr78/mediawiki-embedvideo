@@ -131,12 +131,11 @@ abstract class EmbedVideo
     # Return the HTML necessary to embed the video normally.
     private static function generateNormalClause($url, $width, $height)
     {
-		$arr = explode($url, '/');
-		$id = "af-video-embed_-_{$arr[-1]}";
+		$id = "af-video-embed_" . rand();
         $clause = "<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"document.getElementById('{$id}').style.width='425px';document.getElementById('{$id}').style.height='350px';\" >" .
             "	<param name=\"movie\" value=\"{$url}\"></param>" .
             "	<param name=\"wmode\" value=\"transparent\"></param>" .
-            "	<embed id=\"{$id}\" src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\"></embed>" .
+            "	<embed id=\"{$id}\" src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" class=\"af-media\"></embed>" .
 			"</object>";
         return $clause;
     }
@@ -146,7 +145,7 @@ abstract class EmbedVideo
     private static function generateAlignExternClause($clause, $align, $desc, $width, $height)
     {
         $clause = "<div class=\"thumb t{$align}\">" .
-            "<div class=\"thumbinner\" style=\"width: {$width}px;\">" .
+            "<div class=\"thumbinner af-media\" style=\"width: {$width}px;\" onmousedown=\"this.style.width='425px';\">" .
             $clause .
             "<div class=\"thumbcaption\">" .
             $desc .
