@@ -132,11 +132,18 @@ abstract class EmbedVideo
     private static function generateNormalClause($url, $width, $height)
     {
 		$id = "af-video-embed_" . rand();
-        $clause = "<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"document.getElementById('{$id}').style.width='425px';document.getElementById('{$id}').style.height='350px';\" >" .
+		$clause = "
+		<div>
+			<div
+				id=\"af-media-restore_{$id}\"
+				style=\"text-align: right; font-family: webdings; display: none; cursor: pointer; height: 17px; width: 17px;\"
+				onclick=\"do_resize('{$id}', 'min')\"><img class=\"af-media\" src=\"restore.png\" width=\"16\" height=\"16\" style=\"border: 0px;\" /></div>
+			"	<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"document.getElementById('{$id}').style.width='425px';document.getElementById('{$id}').style.height='350px';\" >" .
             "	<param name=\"movie\" value=\"{$url}\"></param>" .
             "	<param name=\"wmode\" value=\"transparent\"></param>" .
             "	<embed id=\"{$id}\" src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" class=\"af-media\"></embed>" .
-			"</object>";
+			"</object>" .
+		"</div>";
         return $clause;
     }
 
