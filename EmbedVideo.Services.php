@@ -77,5 +77,16 @@ $wgEmbedVideoServiceList = array(
     ),
     'vimeo' => array(
         'url'=>'http://vimeo.com/moogaloop.swf?clip_id=$1&;server=vimeo.com&fullscreen=0&show_title=1&show_byline=1&show_portrait=0'
-    )
+	),
+	'asianfuse' => array(
+		'extern' => 
+			'<object width="$3" height="$4" type="application/x-shockwave-flash" data="http://asianfuse.tv/flowplayer/dist/flowplayer.commercial-3.2.5.swf?0.0567059932269135" name="fp_98242867_api" id="fp_98242867_api">
+				<param value="true" name="allowfullscreen">
+				<param value="always" name="allowscriptaccess">
+				<param value="high" name="quality">
+				<param value="true" name="cachebusting">
+				<param value="#000000" name="bgcolor">
+				<param value="config={&quot;key&quot;:&quot;#$b453a3df7cfee525468&quot;,&quot;clip&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/files/$1&quot;,&quot;autoPlay&quot;:false},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.controls-3.2.0.swf&quot;},&quot;gatracker&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.analytics-3.2.1.swf&quot;,&quot;labels&quot;:{&quot;start&quot;:&quot;Start&quot;,&quot;play&quot;:&quot;Play&quot;,&quot;pause&quot;:&quot;Pause&quot;,&quot;resume&quot;:&quot;Resume&quot;,&quot;seek&quot;:&quot;Seek&quot;,&quot;stop&quot;:&quot;Stop&quot;,&quot;finish&quot;:&quot;Finish&quot;,&quot;mute&quot;:&quot;Mute&quot;,&quot;unmute&quot;:&quot;Unmute&quot;,&quot;fullscreen&quot;:&quot;Full Screen&quot;,&quot;fullscreenexit&quot;:&quot;Full Screen Exit&quot;},&quot;debug&quot;:false,&quot;trackingMode&quot;:&quot;AS3&quot;,&quot;googleId&quot;:&quot;UA-10700419-6&quot;},&quot;pseudo&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.pseudostreaming-3.2.2.swf&quot;},&quot;pseudoInstream&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.pseudostreaming-3.2.2.swf&quot;}},&quot;playerId&quot;:&quot;fp_98242867&quot;,&quot;playlist&quot;:[{&quot;url&quot;:&quot;http://asianfuse.tv/files/$1&quot;,&quot;autoPlay&quot;:false}]}" name="flashvars">
+			</object>'
+	),
 );
