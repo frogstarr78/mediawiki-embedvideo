@@ -120,43 +120,55 @@ abstract class EmbedVideo
         return array($clause, 'noparse' => true, 'isHTML' => true);
     }
 
+	private static function html_id($rand = null) {
+		if($rand == null){
+			$rand = rand();
+		}
+		$id = "af-video-embed_{$rand}";
+		return array($rand, $id);
+	}
+
     # Generate the HTML necessary to embed the video with the given alignment
     # and text description
     protected static function generateAlignClause($url, $width, $height, $align, $desc)
     {
-		$clause = EmbedVideo::generateNormalClause($url, $width, $height);
-		return EmbedVideo::generateAlignExternClause($clause, $align, $desc, $width, $height);
+
+		$rand = rand();
+		$clause = EmbedVideo::generateNormalClause($url, $width, $height, $rand);
+		return EmbedVideo::generateAlignExternClause($clause, $align, $desc, $width, $height, $rand);
     }
 
     # Return the HTML necessary to embed the video normally.
-    private static function generateNormalClause($url, $width, $height)
+    private static function generateNormalClause($url, $width, $height, $rand = null)
     {
-		$id = "af-video-embed_" . rand();
-		$clause = "
-		<div>
-			<div
-				id=\"af-media-restore_{$id}\"
-				style=\"text-align: right; font-family: webdings; display: none; cursor: pointer; height: 17px; width: 17px;\"
-				onclick=\"do_resize('{$id}', 'min')\"><img class=\"af-media\" src=\"restore.png\" width=\"16\" height=\"16\" style=\"border: 0px;\" /></div>
-			"	<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"document.getElementById('{$id}').style.width='425px';document.getElementById('{$id}').style.height='350px';\" >" .
+		list($rand, $id) = EmbedVideo::html_id($rand);
+		$clause = "<div id=\"af-video-restore_{$rand}\" style=\"text-align: right; display: none; cursor: pointer; height: 17px; width: 17px;\" onclick=\"_asianfuse2.video_panels['{$id}'].maximize();\">" . 
+			"		<img src=\"/images/restore.png\" style=\"width: 16px; height: 16px; border: 0px; background: transparent; -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)'; /* IE8 */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE6 & 7 */ zoom: 1;\" />" . 
+			"</div>" .
+			"<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"_asianfuse2.video_panels['{$id}'].maximize();\">" . 
             "	<param name=\"movie\" value=\"{$url}\"></param>" .
             "	<param name=\"wmode\" value=\"transparent\"></param>" .
-            "	<embed id=\"{$id}\" src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" class=\"af-media\"></embed>" .
+            "	<embed src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" id=\"af-video-embed_{$id}\"></embed>" .
 			"</object>" .
-		"</div>";
+			'<script type="text/javascript">' .
+			"	_asianfuse2.add('{$id}', _asianfuse2);" . 
+			'</script>';
         return $clause;
     }
 
     # The HTML necessary to embed the video with a custom embedding clause,
     # specified align and description text
-    private static function generateAlignExternClause($clause, $align, $desc, $width, $height)
+    private static function generateAlignExternClause($clause, $align, $desc, $width, $height, $rand = null)
     {
+		list($rand, $id) = EmbedVideo::html_id($rand);
         $clause = "<div class=\"thumb t{$align}\">" .
-            "<div class=\"thumbinner af-media\" style=\"width: {$width}px;\" onmousedown=\"this.style.width='425px';\">" .
-            $clause .
-            "<div class=\"thumbcaption\">" .
-            $desc .
-            "</div></div></div>";
+			"	<div style=\"width: {$width}px;\" class=\"thumbinner {$id}\" onmousedown=\"do_resize('{$rand}', 'max'); \">" .
+					$clause .
+            "		<div class=\"thumbcaption\">" .
+						$desc .
+			"		</div>" .
+			"	</div>" . 
+			"</div>";
         return $clause;
     }
 
