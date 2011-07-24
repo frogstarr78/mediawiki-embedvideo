@@ -22,7 +22,7 @@ $wgEmbedVideoServiceList = array(
                     'allowScriptAccess="always" swLiveConnect="true" ' .
                     'pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">' .
                 '</embed>' .
-            '</object>',
+						'</object>',
         'default_width' => 326,
         'default_ratio' => 326/399,
     ),
@@ -87,6 +87,110 @@ $wgEmbedVideoServiceList = array(
 				<param value="true" name="cachebusting">
 				<param value="#000000" name="bgcolor">
 				<param value="config={&quot;key&quot;:&quot;#$b453a3df7cfee525468&quot;,&quot;clip&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/files/$1&quot;,&quot;autoPlay&quot;:false},&quot;plugins&quot;:{&quot;controls&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.controls-3.2.0.swf&quot;},&quot;gatracker&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.analytics-3.2.1.swf&quot;,&quot;labels&quot;:{&quot;start&quot;:&quot;Start&quot;,&quot;play&quot;:&quot;Play&quot;,&quot;pause&quot;:&quot;Pause&quot;,&quot;resume&quot;:&quot;Resume&quot;,&quot;seek&quot;:&quot;Seek&quot;,&quot;stop&quot;:&quot;Stop&quot;,&quot;finish&quot;:&quot;Finish&quot;,&quot;mute&quot;:&quot;Mute&quot;,&quot;unmute&quot;:&quot;Unmute&quot;,&quot;fullscreen&quot;:&quot;Full Screen&quot;,&quot;fullscreenexit&quot;:&quot;Full Screen Exit&quot;},&quot;debug&quot;:false,&quot;trackingMode&quot;:&quot;AS3&quot;,&quot;googleId&quot;:&quot;UA-10700419-6&quot;},&quot;pseudo&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.pseudostreaming-3.2.2.swf&quot;},&quot;pseudoInstream&quot;:{&quot;url&quot;:&quot;http://asianfuse.tv/flowplayer/dist/flowplayer.pseudostreaming-3.2.2.swf&quot;}},&quot;playerId&quot;:&quot;fp_98242867&quot;,&quot;playlist&quot;:[{&quot;url&quot;:&quot;http://asianfuse.tv/files/$1&quot;,&quot;autoPlay&quot;:false}]}" name="flashvars">
-			</object>'
+			</object>' .
+			'<script type="text/javascript">
+				flowplayer("a.flashcontent_1", "http://asianfuse.tv/flowplayer/dist/flowplayer.commercial-3.2.7.swf", {
+					key:"#$b453a3df7cfee525468",
+					clip: {
+						url: "http://asianfuse.tv/files/$1",
+						provider: "pseudo"
+					},
+					play: {
+						url: "http://asianfuse.tv/flowplayer/dist/images/af.png",
+						width: 84,
+						height: 84,
+					},
+
+					logo: {
+						url: "http://asianfuse.tv/flowplayer/dist/images/fuselogo.png",
+						fullscreenOnly: false,
+						displayTime: 40
+					},
+					plugins: {
+
+						controls: {
+							url: "http://asianfuse.tv/flowplayer/dist/flowplayer.controls-3.2.5.swf",
+						},
+
+						gatracker: {
+							url: "http://asianfuse.tv/flowplayer/dist/flowplayer.analytics-3.2.2.swf",
+							labels: {
+								start: "Start",	
+								play: "Play",	
+								pause: "Pause",	
+								resume: "Resume",	
+
+
+								seek: "Seek",	
+								stop: "Stop",	
+								finish: "Finish",	
+								mute: "Mute",	
+								unmute: "Unmute",	
+								fullscreen: "Full Screen",	
+								fullscreenexit: "Full Screen Exit"	
+							},
+							debug: false,
+							trackingMode: "AS3",
+							//	googleId: "UA-10700419-6" 
+							accountId: "UA-10700419-6"
+						},
+
+						viral: {
+							// load the viral videos plugin
+							url: "http://asianfuse.tv/flowplayer/dist/flowplayer.viralvideos-3.2.5.swf",
+
+							email: {
+								// use server-side email sending script
+								script: false
+							},
+
+							share: {
+								// define a video title used in sharing
+								// description: "Extreme surfers riding big waves",
+
+								// disable livespaces (it"s from Microsoft)
+								livespaces: false
+							},
+								// disable embedding completely, the same syntax can 
+								// be used to disable also email and share
+								embed: true
+						},
+
+							captions: {
+								url: "http://asianfuse.tv/flowplayer/dist/flowplayer.captions-3.2.2.swf",
+								captionTarget: "subtitles",
+								button: { width: 20, height: 15, right: 5, top: 5, label: "CC" }
+							},
+
+							subtitles: {
+								url: "http://asianfuse.tv/flowplayer/dist/flowplayer.content-3.2.0.swf",
+								bottom: 20,
+								width: "100%",
+								height: 50,
+								backgroundColor: "transparent",
+								backgroundGradient: "none",
+								border: 0,
+								borderRadius: 0,
+								style: {
+									"body": {
+									fontSize: "15",
+									fontFamily: "Arial",
+									textAlign: "center",
+									color: "#ffffff"
+									}
+								}
+							},
+							// HTTP pseudo-streaming provider - instream instance for mid-roll and child streams
+							pseudo: {
+								url: "http://asianfuse.tv/flowplayer/dist/flowplayer.pseudostreaming-3.2.7.swf"
+							},
+
+							pseudoInstream: {
+								url: "http://asianfuse.tv/flowplayer/dist/flowplayer.pseudostreaming-3.2.7.swf"
+							},
+					}
+				});
+
+			</script>'
 	),
 );
