@@ -148,7 +148,7 @@ abstract class EmbedVideo
 			"<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize();\">" . 
             "	<param name=\"movie\" value=\"{$url}\"></param>" .
             "	<param name=\"wmode\" value=\"transparent\"></param>" .
-            "	<embed src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" id=\"af-media-embed_{$rand}\"></embed>" .
+            "	<embed src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" id=\"af-media-embed_{$rand}\" class='afv' allownetworking='internal'></embed>" .
 			"</object>" .
 			'<script type="text/javascript">' .
 			"	_asianfuse2.add('{$rand}', _asianfuse2);" . 
@@ -163,7 +163,7 @@ abstract class EmbedVideo
     {
 		list($rand, $id) = EmbedVideo::html_id($rand);
         $clause = "<div class=\"thumb t{$align}\">" .
-			" <div style=\"\" class=\"thumbinner\" id=\"af-media-embed-container_{$rand}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize();\">" .
+			" <div style=\"\" class=\"thumbinner afv\" id=\"af-media-embed-container_{$rand}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize();\">" .
 					$clause .
             "		<div class=\"thumbcaption\">" .
 						$desc .
