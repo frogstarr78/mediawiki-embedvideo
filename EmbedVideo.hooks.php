@@ -145,15 +145,20 @@ abstract class EmbedVideo
 		$clause = "<div id=\"af-media-restore_{$rand}\" style=\"text-align: right; display: none; cursor: pointer; height: 17px; width: 17px; border:0px;\" onclick=\"_asianfuse2.video_panels['{$rand}'].minimize();\">" . 
 			"		<img src=\"/images/restore.png\" style=\"width: 16px; height: 16px; border: 0px; background: transparent; -ms-filter: 'progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF)'; /* IE8 */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);/* IE6 & 7 */ zoom: 1;\" />" . 
 			"</div>" .
-			"<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize();\">" . 
+			"<object width=\"{$width}\" height=\"{$height}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize(event);\">" . 
             "	<param name=\"movie\" value=\"{$url}\"></param>" .
             "	<param name=\"wmode\" value=\"transparent\"></param>" .
-            "	<embed src=\"{$url}\" type=\"application/x-shockwave-flash\" wmode=\"transparent\" width=\"{$width}\" height=\"{$height}\" id=\"af-media-embed_{$rand}\" class='afv' allownetworking='internal'></embed>" .
-			"</object>" .
-			'<script type="text/javascript">' .
-			"	_asianfuse2.add('{$rand}', _asianfuse2);" . 
-			"	_asianfuse2.video_panels['{$rand}'].container.width({$width});" .
-			'</script>';
+						"	<embed
+								src=\"{$url}\"
+								type=\"application/x-shockwave-flash\"
+								wmode=\"transparent\"
+								width=\"{$width}\"
+								height=\"{$height}\"
+								id=\"af-media-embed_{$rand}\"
+								class='afv'
+								allownetworking='internal'>" .
+						"</embed>" .
+			"</object>";
         return $clause;
     }
 
@@ -163,7 +168,7 @@ abstract class EmbedVideo
     {
 		list($rand, $id) = EmbedVideo::html_id($rand);
         $clause = "<div class=\"thumb t{$align}\">" .
-			" <div style=\"\" class=\"thumbinner afv\" id=\"af-media-embed-container_{$rand}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize();\">" .
+			" <div style=\"\" class=\"afv\" id=\"af-media-embed-container_{$rand}\" onmousedown=\"_asianfuse2.video_panels['{$rand}'].maximize(event);\">" .
 					$clause .
             "		<div class=\"thumbcaption\">" .
 						$desc .
