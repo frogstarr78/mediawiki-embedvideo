@@ -41,3 +41,14 @@ if (version_compare($wgVersion, '1.7', '<')) {
 } else {
     $wgHooks['LanguageGetMagic'][] = 'EmbedVideo::parserFunctionMagic';
 }
+
+$wgHooks['BeforePageDisplay'][]  = 'AsianFuseJavaScript';
+ 
+function AsianFuseJavaScript( $out ) 
+{
+	$out->addStyle( "http://asianfuse.tv/flowplayer/dist/global.css" );
+	$out->addScript( '<script type="text/javascript" src="http://asianfuse.tv/flowplayer/dist/flowplayer-3.2.4.min.js"></script>');
+	return true;
+}
+
+
